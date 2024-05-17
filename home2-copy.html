@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home 2</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- GSAP -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+      defer
+    ></script>
+    <script src="assets/js/anim.js" defer></script>
+
+    <style>
+      body {
+        height: 100vh;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+      }
+      .hero-section {
+        position: relative;
+        display: flex;
+        width: 100%;
+      }
+      .hero-section .main-anim {
+        perspective: 800px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .hero-section .main-anim * {
+        transform-style: preserve-3d;
+      }
+      .hero-section .main-anim .logo {
+        width: 350px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotateX(60deg);
+        /* box-shadow: blue 30px 30px; */
+        mix-blend-mode: multiply;
+      }
+      .hero-section .main-anim .rect {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        /* transform: translate(-50%, -50%) rotateX(60deg); */
+        transform: var(--rect-from-anim);
+        /* animation: rotate-anim 20s infinite linear; */
+      }
+      .hero-section .main-anim .rect.rotate {
+        animation: rotate-anim 10s infinite linear;
+      }
+      @keyframes rotate-anim {
+        0% {
+          /* transform: translate(-50%, -50%) rotateX(60deg) rotateZ(0deg); */
+          transform: var(--rect-from-anim);
+        }
+        100% {
+          /* transform: translate(-50%, -50%) rotateX(60deg) rotateZ(360deg); */
+          transform: var(--rect-to-anim);
+        }
+      }
+      .hero-section .main-anim .rect:nth-child(odd) {
+        width: 400px;
+        height: 400px;
+        /* background: rgb(214, 225, 229); */
+      }
+      .hero-section .main-anim .rect:nth-child(even) {
+        width: 500px;
+        height: 500px;
+        /* background: rgb(214, 225, 229); */
+      }
+      /* .rect:nth-child(2) {
+        transform: translateZ(100px);
+      } */
+      .hero-section .main-anim .rect .item {
+        border-radius: 50%;
+        position: absolute;
+        rotate: var(--item-from-anim);
+        /* animation: rotate2-anim 20s infinite linear; */
+      }
+      .hero-section .main-anim .rect .item.rotate {
+        animation: rotate2-anim 10s infinite linear;
+      }
+      @keyframes rotate2-anim {
+        0% {
+          rotate: 0deg;
+          /* rotate: var(--item-from-anim); */
+        }
+        100% {
+          rotate: -360deg;
+          /* rotate: var(--item-to-anim); */
+        }
+      }
+      .hero-section .main-anim .rect .item {
+        width: 80px;
+        height: 80px;
+        background-color: #d6dbe5;
+        /* background-color: #0089d0; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: #bfc3ca 0px 8px;
+        /* box-shadow: var(--item-box-shadow); */
+      }
+      .hero-section .main-anim .rect .item i {
+        font-size: 30px;
+        color: #0089d0;
+      }
+      .hero-section .main-anim .rect .item:nth-child(1) {
+        top: 0;
+        left: 0;
+      }
+      .hero-section .main-anim .rect .item:nth-child(2) {
+        top: 0;
+        right: 0;
+      }
+      .hero-section .main-anim .rect .item:nth-child(3) {
+        bottom: 0;
+        right: 0;
+      }
+      .hero-section .main-anim .rect .item:nth-child(4) {
+        bottom: 0;
+        left: 0;
+      }
+      .hero-section .text {
+        width: 50%;
+      }
+      .hero-section .items-placeholder {
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero-section">
+      <div class="main-anim">
+        <img src="assets/images/adidas.png" alt="LOGO" class="logo" />
+        <div>
+          <!-- rect 1 -->
+          <div
+            class="rect"
+            style="
+              --rect-from-anim: translate(-50%, -50%) rotateX(60deg)
+                rotateZ(0deg);
+              --rect-to-anim: translate(-50%, -50%) rotateX(60deg)
+                rotateZ(360deg);
+            "
+          >
+            <!-- <div class="item" style="--item-box-shadow: #d6dbe5 0px 12px">
+              <i class="fa-solid fa-database"></i>
+            </div> -->
+            <div
+              class="item"
+              style="--item-from-anim: 0deg; --item-to-anim: -360deg"
+            >
+              <i class="fa-solid fa-database"></i>
+            </div>
+            <div
+              class="item"
+              style="--item-from-anim: 0deg; --item-to-anim: -360deg"
+            >
+              <i class="fa-solid fa-server"></i>
+            </div>
+            <div
+              class="item"
+              style="--item-from-anim: 0deg; --item-to-anim: -360deg"
+            >
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div
+              class="item"
+              style="--item-from-anim: 0deg; --item-to-anim: -360deg"
+            >
+              <i class="fa-solid fa-cloud"></i>
+            </div>
+          </div>
+
+          <!-- rect 2 -->
+          <div
+            class="rect"
+            style="
+              --rect-from-anim: translate(-50%, -50%) rotateX(60deg)
+                rotateZ(45deg) translateZ(70px);
+              --rect-to-anim: translate(-50%, -50%) rotateX(60deg)
+                rotateZ(405deg) translateZ(70px);
+            "
+          >
+            <!-- <div class="item" style="--item-box-shadow: #d6dbe5 6px 6px">
+              <i class="fa-solid fa-database"></i>
+            </div> -->
+            <div
+              class="item"
+              style="--item-from-anim: -45deg; --item-to-anim: -405deg"
+            >
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <div
+              class="item"
+              style="--item-from-anim: -45deg; --item-to-anim: -405deg"
+            >
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <div
+              class="item"
+              style="--item-from-anim: -45deg; --item-to-anim: -405deg"
+            >
+              <i class="fa-brands fa-cloudflare"></i>
+            </div>
+            <div
+              class="item"
+              style="--item-from-anim: -45deg; --item-to-anim: -405deg"
+            >
+              <i class="fa-solid fa-chart-simple"></i>
+            </div>
+          </div>
+
+          <!-- rect 3 -->
+          <div
+            class="rect"
+            style="
+              --rect-from-anim: translate(-50%, -50%) rotateX(60deg)
+                rotateZ(0deg) translateZ(140px);
+              --rect-to-anim: translate(-50%, -50%) rotateX(60deg)
+                rotateZ(360deg) translateZ(140px);
+            "
+          >
+            <div
+              class="item"
+              style="--item-from-anim: 0deg; --item-to-anim: -360deg"
+            >
+              <i class="fa-brands fa-soundcloud"></i>
+            </div>
+            <div
+              class="item"
+              style="--item-from-anim: 0deg; --item-to-anim: -360deg"
+            >
+              <i class="fa-solid fa-coins"></i>
+            </div>
+            <div
+              class="item"
+              style="--item-from-anim: 0deg; --item-to-anim: -360deg"
+            >
+              <i class="fa-solid fa-tablet-screen-button"></i>
+            </div>
+            <div
+              class="item"
+              style="--item-from-anim: 0deg; --item-to-anim: -360deg"
+            >
+              <i class="fa-solid fa-shapes"></i>
+            </div>
+          </div>
+
+          <!-- rect 4 -->
+          <div
+            class="rect"
+            style="
+              --rect-from-anim: translate(-50%, -50%) rotateX(60deg)
+                rotateZ(45deg) translateZ(210px);
+              --rect-to-anim: translate(-50%, -50%) rotateX(60deg)
+                rotateZ(405deg) translateZ(210px);
+            "
+          >
+            <div
+              class="item"
+              style="--item-from-anim: -45deg; --item-to-anim: -405deg"
+            >
+              <i class="fa-solid fa-photo-film"></i>
+            </div>
+            <div
+              class="item"
+              style="--item-from-anim: -45deg; --item-to-anim: -405deg"
+            >
+              <i class="fa-solid fa-message"></i>
+            </div>
+            <div
+              class="item"
+              style="--item-from-anim: -45deg; --item-to-anim: -405deg"
+            >
+              <i class="fa-solid fa-map"></i>
+            </div>
+            <div
+              class="item"
+              style="--item-from-anim: -45deg; --item-to-anim: -405deg"
+            >
+              <i class="fa-solid fa-location-crosshairs"></i>
+            </div>
+          </div>
+
+          <!-- rect 5 -->
+          <div
+            class="rect"
+            style="
+              --rect-from-anim: translate(-50%, -50%) rotateX(60deg)
+                rotateZ(0deg) translateZ(280px);
+              --rect-to-anim: translate(-50%, -50%) rotateX(60deg)
+                rotateZ(360deg) translateZ(280px);
+            "
+          >
+            <div
+              class="item"
+              style="--item-from-anim: 0deg; --item-to-anim: -360deg"
+            >
+              <i class="fa-solid fa-grip"></i>
+            </div>
+            <div
+              class="item"
+              style="--item-from-anim: 0deg; --item-to-anim: -360deg"
+            >
+              <i class="fa-solid fa-file-powerpoint"></i>
+            </div>
+            <div
+              class="item"
+              style="--item-from-anim: 0deg; --item-to-anim: -360deg"
+            >
+              <i class="fa-solid fa-envelope-circle-check"></i>
+            </div>
+            <div
+              class="item"
+              style="--item-from-anim: 0deg; --item-to-anim: -360deg"
+            >
+              <i class="fa-solid fa-cloud-arrow-down"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text">This is some content.</div>
+      <div class="items-placeholder">This is a placeholder for items.</div>
+    </section>
+  </body>
+</html>
