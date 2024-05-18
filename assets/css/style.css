@@ -3743,7 +3743,7 @@ footer .logo a {
   transform: scale(0.47);
   -webkit-transform-origin: top left;
   transform-origin: top left;
-  fill: var(--color13);
+  fill: var(--color3);
 }
 .social-links2 > a i {
   position: absolute;
